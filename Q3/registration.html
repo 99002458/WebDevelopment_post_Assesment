@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form Registration Form</title>
+    <script src="https://code.jquery.com/jquery-2.2.3.min.js"></script>
+    <script>
+        function validateEmail() {
+            var str = document.getElementById("email").value;
+            if (str.match(/@/g))
+                return false;
+
+            else
+                return true;
+        }
+
+        function validatePhone() {
+            var str = document.getElementById("phone").value;
+            if (str.length != 10)
+                return false;
+            else
+                return true;
+        }
+
+        function validationForm() {
+
+            if (document.getElementById("unameid").value == "") {
+                alert("Enter your name");
+                document.myform.username.focus();
+            } else if (document.getElementById("passwordid").value == "") {
+                alert("Enter your password");
+                document.myform.password.focus();
+            } else if (validatePassword()) {
+                alert("Enter Password");
+                document.myform.password.focus();
+            } else if (document.getElementById("email").value == "") {
+                alert("Enter your Email ID");
+                document.myform.emailID.focus();
+            } else if (validateEmail()) {
+                alert("Enter a valid email");
+                document.myform.emailID.focus();
+            } else if (document.getElementById("phone").value == "") {
+                alert("Enter your Phone Number");
+                document.myform.phoneNum.focus();
+            } else if (validatePhone()) {
+                alert("Enter a valid Phone Number");
+                document.myform.phoneNum.focus();
+                name = "dev";
+            };
+        }
+
+        $(document).ready(function() {
+
+            $('#mybutton').click(function() {
+                $.get('profiles.json', function(data, status) {
+
+
+
+                    console.log(status);
+                    data.forEach(profile => {
+                        var str = '';
+                        urname = document.getElementById("unameid").value;
+                        flag = 0;
+                        for (const prop in profile) {
+
+
+                            if (!urname.localeCompare(prop.username)) {
+                                alert("Username already exist, please give another one");
+                                flag = 0;
+                                break;
+                            } else {
+                                flag = 1;
+                            }
+                        }
+                        if (flag == 1 && name == "dev") {
+
+                            alert("Registration is successful");
+                            document.myform.submit();
+                        }
+
+
+
+                    });
+                });
+            });
+        });
+    </script>
+</head>
+
+<body>
+    <table>
+        <form method="GET" name="myform">
+            <tr>
+                <td>Enter name</td>
+                <td>
+                    <input type="text" name="username" id="unameid" placeholder="Enter name" required/><br/>
+                </td>
+            </tr>
+            <tr>
+                <td>Enter Password</td>
+                <td>
+                    <input type="password" name="password" id="passwordid" placeholder="Enter password" required/><br>
+                </td>
+            </tr>
+
+            <tr>
+                <td>Email</td>
+                <td>
+                    <input type="text" name="EmailID" placeholder="Enter Your Email" id="email"><br>
+                </td>
+            </tr>
+            <tr>
+                <td>Phone Number</td>
+                <td>
+                    <input type="text" name="phoneNum" id="phone" placeholder="Enter Phone Number" /><br/>
+                </td>
+            </tr>
+            <tr>
+                <td>City</td>
+                <td>
+                    <input type="text" name="cityname" id="city" placeholder="Enter City Name" /><br/>
+                </td>
+            </tr>
+            <tr>
+
+                <td>
+                    <input type="button" value="fieldcheck" id="mybutton1" onclick="validationForm()" />
+                </td>
+                <td>
+                    <input type="button" value="register" id="mybutton" />
+                </td>
+
+                <td>
+                    <input type="reset" value="clear" />
+                </td>
+            </tr>
+
+        </form>
+    </table>
+</body>
+
+</html>
