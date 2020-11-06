@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        function selectDevice() {
+
+            var sel = document.getElementById("devices");
+            if (sel.value == 'Laptop') {
+                document.getElementById("mydivid").innerHTML = "Assus<br>Acer<br>Hp<br>Lenovo<br>Dell<br>Apple";
+            } else if (sel.value == 'Mobile') {
+                document.getElementById("mydivid").innerHTML = "Realme<br>Oppo<br>Iphone<br>Redmi<br>moto<br>Samsung";
+            } else if (sel.value == 'TV') {
+                document.getElementById("mydivid").innerHTML = "LG<br>Lenovo<br>Samsung<br>Sony";
+            } else {
+                document.getElementById("mydivid").innerHTML = "";
+            }
+        }
+    </script>
+</head>
+
+<body>
+    Select Device
+    <select name="device" id="devices" onclick="selectDevice()">
+<option value="select">--select--</option>
+<option value="Laptop">Laptop</option>
+<option value="TV">TV</option>
+<option value="Mobile">Mobile</option>
+</select>
+    <div style="background-color: yellow;" id="mydivid"></div>
+</body>
+
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- 
+arrl1 = 'Dell~Samsung~Hp~Lenovo~Acer~Apple';
+ltemp = arrl1.split('~').join(" <br> ");
+arrt2 = 'Samsung~Sony~LG~Lenovo';
+ttemp = arrt2.split('~').join(" <br> ");
+arrm3 = 'Redmi~moto~Samsung~Realme~Oppo~iphone';
+mtemp = arrm3.split('~').join(" <br> "); -->
