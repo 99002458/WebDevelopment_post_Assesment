@@ -1,0 +1,23 @@
+[{
+        "name": "abc",
+        "city": "mumbai",
+        "type": "veg",
+        "cuisen": "rice"
+
+    },
+
+    {
+        "name": "xyz",
+        "city": "banglore",
+        "type": "non-veg",
+        "cuisen": "dalma"
+
+    },
+    {
+        "name": "cdp",
+        "city": "nashik",
+        "type": "veg",
+        "cuisen": "kadi"
+
+    }
+]
